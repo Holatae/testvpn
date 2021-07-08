@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  vpn:
+    image: hwdsl2/ipsec-vpn-server
+    restart: always
+    environment:
+      - VPN_DNS_SRV1=1.1.1.1
+      - VPN_DNS_SRV2=1.0.0.1
+      - VPN_IPSEC_PSK=hola
+      - VPN_USER=your_vpn_username
+      - VPN_PASSWORD=your_vpn_password
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    privileged: true
+    hostname: ipsec-vpn-server
+    container_name: ipsec-vpn-server
